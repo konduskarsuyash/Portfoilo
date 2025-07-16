@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Terminal-specific styles with reduced margins */
+.section-header {
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.1em;
+  display: block;
+  /* margin-bottom: 0.3rem; */
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid #374151;
+}
+
+.skill-category {
+  color: #f59e0b;
+  font-weight: bold;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
+}
+
+.skill-name, .language, .web-tech, .database, .tool {
+  display: inline-block;
+  font-weight: 500;
+}
+
+.skill-name { color: #34d399; }
+.language { color: #60a5fa; }
+.web-tech { color: #a78bfa; }
+.database { color: #f472b6; }
+.tool { color: #fcd34d; }
+
+.skill-percent {
+  color: #f87171;
+  font-weight: bold;
+}
+
+.project-title {
+  color: #3b82f6;
+  font-weight: bold;
+  display: block;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.tech-stack {
+  color: #f59e0b;
+  font-style: italic;
+  display: block;
+  margin-bottom: 0;
+  font-size: 0.9em;
+}
+
+.github-link {
+  color: #6ee7b7;
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.9em;
+}
+
+.github-link a {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.github-link a:hover {
+  color: #34d399;
+  text-decoration-style: solid;
+}
+
+.job-title {
+  color: #34d399;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+}
+
+.company-name {
+  color: #60a5fa;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.job-duration {
+  color: #94a3b8;
+  font-style: italic;
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.9em;
+}
+
+.education-item {
+  color: #60a5fa;
+  font-weight: bold;
+  display: block;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+}
+
+.institution-name {
+  color: #a78bfa;
+  display: block;
+  margin-bottom: 0;
+  font-size: 0.95em;
+}
+
+.education-date {
+  color: #94a3b8;
+  font-style: italic;
+  display: block;
+  margin-bottom: 0.1rem;
+  font-size: 0.9em;
+}
+
+.section-title {
+  color: #f59e0b;
+  font-weight: bold;
+  display: block;
+  margin-top: 0.7rem;
+  margin-bottom: 0.1rem;
+}
+
+.contact-category {
+  color: #4ade80;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 0.3rem;
+}
+
+.contact-link {
+  color: #60a5fa;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.contact-link:hover {
+  color: #3b82f6;
+  text-decoration-style: solid;
+}
+
+.contact-value {
+  color: #d1d5db;
+}
+
+.platform {
+  color: #f472b6;
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 0.2rem;
+}
+
+.grade-highlight {
+  color: #fcd34d;
+  font-weight: 500;
+}
+
+.award-highlight {
+  color: #f87171;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #6ee7b7;
+  font-weight: 500;
+}
+
+.cmd-hint {
+  color: #f472b6;
+  font-weight: bold;
+  background-color: rgba(244, 114, 182, 0.1);
+  padding: 0.05rem 0.2rem;
+  border-radius: 0.2rem;
+}
+
+.tech-highlight {
+  color: #a78bfa;
+  font-weight: 500;
+}
+
+.role-title, .location, .seeking {
+  display: block;
+  /* margin-bottom: 0.1rem; */
+}
+
+.role-title { color: #34d399; font-weight: bold; }
+.location { color: #60a5fa; }
+.seeking { color: #f59e0b; margin-bottom: 0.5rem; }
+
+.about-text, .philosophy-text {
+  color: #d1d5db;
+  display: block;
+}
+
+.about-text { margin-bottom: 0.5rem; }
+/* .philosophy-text { margin-top: 0.2rem; } */
+
+/* Add compact line height for the terminal output */
+.terminal-content {
+  line-height: 1.3;
+}
+
+/* Add negative margin to project bullets to tighten spacing */
+.terminal-content ul {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+}
+
+/* Make project links more compact */
+.project-group {
+  margin-bottom: 0.5rem;
+}
+
+/* Custom scrollbar for code blocks */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Handle horizontal scrolling for ASCII art on mobile */
+.ascii-art {
+  font-size: 0.5rem;
+  overflow-x: auto;
+  white-space: pre;
+  line-height: 0.9;
+}
+
+@media (min-width: 640px) {
+  .ascii-art {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ascii-art {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}

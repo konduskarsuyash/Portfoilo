@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suyash Konduskar - Terminal Portfolio</title>
+    <meta name="description" content="Interactive terminal-style portfolio of Suyash Santosh Konduskar - Computer Science student, Full-stack developer, and AI/ML enthusiast" />
+    <meta name="keywords" content="Suyash Konduskar, portfolio, developer, terminal, CLI, software engineer, web development, machine learning, AI, React, Python" />
+    
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        background-color: #111827;
+        color: #10b981;
+        font-family: Monaco, Menlo, "Ubuntu Mono", monospace;
+      }
+      
+      /* Custom scrollbar for terminal feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #1f2937;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #4b5563;
+        border-radius: 4px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6b7280;
+      }
+      
+      /* Disable text selection for better terminal feel */
+      .no-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
