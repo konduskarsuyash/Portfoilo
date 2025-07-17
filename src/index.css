@@ -247,3 +247,39 @@
     line-height: 1.2;
   }
 }
+
+/* Terminal content spacing fixes */
+.terminal-content h1, .terminal-content h2, .terminal-content h3 {
+  margin: 0.3em 0 0.2em 0;
+}
+
+.terminal-content p {
+  margin: 0 0 0.2em 0;
+}
+
+.compact-text {
+  line-height: 1.2;
+}
+
+/* Fix emoji spacing */
+.terminal-content img, .terminal-content .emoji {
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Reduce spacing in lists */
+.terminal-content ul, .terminal-content ol {
+  margin: 0.1em 0;
+  padding-left: 1.5em;
+}
+
+.terminal-content li {
+  margin: 0;
+}
+
+/* Adjust horizontal spacing */
+.terminal-content hr {
+  margin: 0.2em 0;
+  border-top: 1px solid #333;
+}

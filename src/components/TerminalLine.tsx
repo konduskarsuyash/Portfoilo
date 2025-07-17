@@ -12,12 +12,14 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
   isMobile, 
   onAnimationComplete 
 }) => {
+  // Existing state and refs
   const [content, setContent] = useState(entry.animate ? '' : entry.content);
   const [isComplete, setIsComplete] = useState(!entry.animate);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const hasNotifiedRef = useRef(false);
 
+  // Typewriter effect logic
   useEffect(() => {
     // For non-animated content, just show it immediately
     if (!entry.animate) {
@@ -52,6 +54,10 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
       if (charIndex < text.length) {
         setContent(text.slice(0, charIndex + 1));
         charIndex++;
+        
+        // Trigger a scroll event after each character is typed
+        // This helps parent components that listen for DOM changes
+        window.dispatchEvent(new Event('terminal-content-update'));
       } else {
         if (intervalRef.current) {
           clearInterval(intervalRef.current);
@@ -76,7 +82,7 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
     };
   }, [entry.content, entry.animate, onAnimationComplete]);
 
-  // Add click handlers to links after content is rendered
+  // Event handlers for links
   useEffect(() => {
     if (contentRef.current && isComplete) {
       const links = contentRef.current.querySelectorAll('a');
@@ -94,24 +100,32 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
   
   const prompt = isMobile ? 'guest$ ' : 'guest@suyash-portfolio:~$ ';
   
-  // Process any custom formatting in the content
+  // Process content but minimize spacing
   const processContent = (content: string) => {
     if (!content) return '';
     
-    // Replace skill bars with more compact styled versions
+    // Replace skill bars with more compact versions
     content = content.replace(/\[([\|]+) /g, (match, bars) => {
       const barCount = bars.length;
       const barWidth = barCount * 10;
       
       return `<span class="inline-flex items-center">
-        <span class="inline-block w-12 h-1 bg-gray-700 rounded-sm overflow-hidden">
-          <span class="inline-block h-full bg-green-500 rounded-sm" style="width: ${barWidth}%"></span>
+        <span class="inline-block w-12 h-1 bg-gray-700 rounded-none overflow-hidden">
+          <span class="inline-block h-full bg-green-500 rounded-none" style="width: ${barWidth}%"></span>
         </span>
       </span>`;
     });
 
-    // Remove excess whitespace between bullet points
-    content = content.replace(/•\s+/g, '• ');
+    // Reduce line spacing and empty lines
+    content = content
+      // Remove excess empty lines (more than 1 consecutive)
+      .replace(/\n\s*\n\s*\n+/g, '\n\n')
+      // Remove excess whitespace between bullet points
+      .replace(/•\s+/g, '• ')
+      // Convert horizontal rules to more compact versions
+      .replace(/---+/g, '――――――――――――――')
+      // Make section headings more compact
+      .replace(/\n\n(#+\s.*)\n\n/g, '\n$1\n');
     
     return content;
   };
@@ -141,11 +155,11 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
   return (
     <div className="flex">
       {getLinePrefix()}
-      <div className={`${getTextColor()} whitespace-pre-wrap break-words flex-1 ${isMobile ? 'text-xs' : ''}`}>
+      <div className={`${getTextColor()} whitespace-pre-wrap break-words flex-1 leading-tight ${isMobile ? 'text-xs' : ''}`}>
         <div 
           ref={contentRef}
           dangerouslySetInnerHTML={{ __html: processContent(content) }} 
-          className="terminal-content"
+          className="terminal-content compact-text"
         />
         {entry.animate && !isComplete && (
           <span className="animate-pulse">█</span>

@@ -72,9 +72,24 @@ export const Terminal: React.FC = () => {
 
   // Auto-scroll to bottom
   useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    const scrollToBottom = () => {
+      if (terminalRef.current) {
+        terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      }
+    };
+    
+    // Scroll on history changes
+    scrollToBottom();
+    
+    // Create a scroll interval during animations to ensure smooth scrolling
+    let scrollInterval: NodeJS.Timeout | null = null;
+    if (isAnimating) {
+      scrollInterval = setInterval(scrollToBottom, 50); // Scroll every 50ms during animation
     }
+    
+    return () => {
+      if (scrollInterval) clearInterval(scrollInterval);
+    };
   }, [history, isAnimating]);
 
   // Focus input on click
@@ -100,6 +115,20 @@ export const Terminal: React.FC = () => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Add a new effect to listen for content updates
+  useEffect(() => {
+    const handleContentUpdate = () => {
+      if (terminalRef.current) {
+        terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      }
+    };
+    
+    window.addEventListener('terminal-content-update', handleContentUpdate);
+    return () => {
+      window.removeEventListener('terminal-content-update', handleContentUpdate);
+    };
   }, []);
 
   const handleAnimationComplete = useCallback(() => {
