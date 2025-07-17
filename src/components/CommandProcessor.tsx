@@ -137,16 +137,17 @@ private async showSkills(): Promise<CommandResult> {
 <span class="skill-category">Web Development:</span>
 • <span class="web-tech">JavaScript</span>  [||||||||| <span class="skill-percent">85%</span>]
 • <span class="web-tech">React.js</span>    [||||||||| <span class="skill-percent">80%</span>]
-• <span class="web-tech">Node.js</span>     [||||||||| <span class="skill-percent">85%</span>]
+• <span class="web-tech">React Native</span>     [||||||||| <span class="skill-percent">85%</span>]
 • <span class="web-tech">Flask</span>       [|||||||| <span class="skill-percent">75%</span>]
 • <span class="web-tech">Django</span>      [|||||||||| <span class="skill-percent">90%</span>]
 • <span class="web-tech">FastAPI</span>     [|||||||||| <span class="skill-percent">90%</span>]
-• <span class="web-tech">Spring Boot</span> [|||||||| <span class="skill-percent">75%</span>]
 • <span class="web-tech">Docker</span>      [||||||||| <span class="skill-percent">80%</span>]
 
 <span class="skill-category">Databases:</span>
 • <span class="database">MySQL</span>       [|||||||||| <span class="skill-percent">90%</span>]
 • <span class="database">PostgreSQL</span>  [||||||||| <span class="skill-percent">85%</span>]
+• <span class="database">MongoDB</span>  [|||||||| <span class="skill-percent">80%</span>]
+
 
 <span class="skill-category">Tools:</span>
 • <span class="tool">Git/GitHub</span>   [|||||||||| <span class="skill-percent">95%</span>]
@@ -164,7 +165,7 @@ private async showProjects(): Promise<CommandResult> {
 
 <div class="project-group">
 <span class="project-title">RetailAI - AI-powered Retail Analytics Platform</span>
-<span class="tech-stack">Tech: FastAPI, Next.js, TensorFlow, React Native</span>
+<span class="tech-stack">Tech: FastAPI, Next.js, Machine Learning, React Native,Recommendation Model</span>
 <span class="github-link">GitHub: <a href="https://github.com/konduskarsuyash/RetailAi" target="_blank">github.com/konduskarsuyash/RetailAi</a></span>
 • Built an AI platform for real-time demand forecasting and smart outlet expansion
 • Designed interactive maps to monitor outlet performance and recommend optimal locations
@@ -173,7 +174,7 @@ private async showProjects(): Promise<CommandResult> {
 
 <div class="project-group">
 <span class="project-title">EY BPO - Business Process Optimization for BPOs</span>
-<span class="tech-stack">Tech: FastAPI, Next.js, PostgreSQL, JWT auth, Whisper, NLP</span>
+<span class="tech-stack">Tech: FastAPI, Next.js, PostgreSQL, NLP,Ai Agents</span>
 <span class="github-link">GitHub: <a href="https://github.com/konduskarsuyash/EY_BPO" target="_blank">github.com/konduskarsuyash/EY_BPO</a></span>
 • Built an AI platform to automate claims handling and callbacks in Indian BPOs
 • Integrated Whisper and NLP for real-time multilingual speech recognition
@@ -183,7 +184,7 @@ private async showProjects(): Promise<CommandResult> {
 
 <div class="project-group">
 <span class="project-title">AIRQI - AI-Driven Air Quality Prediction and Alerts</span>
-<span class="tech-stack">Tech: React Native, Supabase, IoT, Gas Sensor V2, XGBoost</span>
+<span class="tech-stack">Tech: React Native, PostgreSQL(Supabase), IoT, XGBoost</span>
 <span class="github-link">GitHub: <a href="https://github.com/konduskarsuyash/AIRQI-IPD-" target="_blank">github.com/konduskarsuyash/AIRQI-IPD-</a></span>
 • Developed a mobile app for real-time pollution tracking and asthma-specific health alerts
 • Integrated with Supabase to fetch sensor data pushed every 15s
@@ -208,7 +209,7 @@ private async showExperience(): Promise<CommandResult> {
     type: 'output',
     content: `<span class="section-header">Professional Experience</span>
 
-<span class="job-title">Python Developer Intern</span> at <span class="company-name">JagranaTechCommunications</span>
+<span class="job-title">Python Developer Intern</span> at <span class="company-name">Jagatmitrafoundations</span>
 <span class="job-duration">01/2024 - 03/2024</span>
 
 • Migrated the entire codebase to <span class="tech-highlight">Python</span> in <span class="tech-highlight">Django</span>, enhancing scalability and maintainability
@@ -233,7 +234,7 @@ private async showEducation(): Promise<CommandResult> {
 <span class="education-item">B.tech in Computer Science Engineering (Data Science)</span>
 <span class="institution-name">Dwarakadas J Sanghavi College Of Engineering</span>
 <span class="education-date">2022 - 2025</span>
-• Grade: <span class="grade-highlight">B- (7.32)</span>
+• Grade: <span class="grade-highlight">B- (8.32)</span>
 
 <span class="education-item">HSC board</span>
 <span class="institution-name">Vidyanidhi's Annasaheb Vartak College</span>
@@ -243,12 +244,12 @@ private async showEducation(): Promise<CommandResult> {
 <span class="education-item">SSC board</span>
 <span class="institution-name">Utkarsha Mandiayavik Vidyalaya</span>
 <span class="education-date">2019 - 2020</span>
-• Percentage: <span class="grade-highlight">94%</span>
+• Percentage: <span class="grade-highlight">95%</span>
 
 <span class="section-title">Awards & Achievements:</span>
-• <span class="award-highlight">🥇 1st Place</span> - Datason Datathon 2023 (Core ML)
+• <span class="award-highlight">🥇 1st Place</span> - Datason Datathon 2025 (Core ML)
   Ranked 1st among 55 teams (230 participants) at KJ Somaiya College
-• <span class="award-highlight">🥉 6th Place</span> - KnowCode 2.0 2023
+• <span class="award-highlight">🥉 6th Place</span> - KnowCode 2.0 2025
   Ranked 6th among 60 Teams at KJ Somaiya College of Engineering
 
 <span class="section-title">Extra Curriculars:</span>

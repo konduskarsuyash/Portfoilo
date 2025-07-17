@@ -29,7 +29,7 @@ export const Terminal: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Initialize with welcome message - but only once
+  // Initialize with welcome message
   useEffect(() => {
     if (!welcomeShown) {
       const showWelcome = async () => {
@@ -48,7 +48,7 @@ export const Terminal: React.FC = () => {
               type: 'output',
               content: result.content,
               timestamp: new Date(),
-              animate: false  // Don't animate welcome
+              animate: false
             }
           ]);
           
@@ -210,7 +210,6 @@ export const Terminal: React.FC = () => {
     // Handle tab for command completion
     if (e.key === 'Tab') {
       e.preventDefault();
-      // Simple tab completion for commands
       const availableCommands = [
         'help', 'welcome', 'aboutme', 'projects', 'skills', 
         'experience', 'education', 'contact', 'email', 'resume', 
@@ -233,16 +232,16 @@ export const Terminal: React.FC = () => {
   return (
     <div 
       ref={terminalRef}
-      className="h-screen w-screen bg-black text-green-400 font-mono text-sm md:text-base overflow-auto p-2 md:p-4"
+      className="h-screen w-screen bg-black text-green-400 font-mono text-sm md:text-base overflow-auto p-1"
       style={{ fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace' }}
     >
       <div className="max-w-4xl mx-auto">
-        {/* Terminal Header */}
-        <div className="flex items-center justify-between mb-2 pb-2 border-b border-gray-700">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+        {/* Terminal Header - minimal padding */}
+        <div className="flex items-center justify-between mb-1 pb-1 border-b border-gray-700">
+          <div className="flex items-center space-x-1">
+            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
           </div>
           <div className="text-gray-400 text-xs">{isMobile ? 'suyash@terminal' : 'suyash@terminal ~ '}</div>
         </div>
@@ -250,7 +249,7 @@ export const Terminal: React.FC = () => {
         {/* Terminal Content */}
         <div>
           {history.map((entry) => (
-            <div key={entry.id} className="mb-1">
+            <div key={entry.id}>
               <TerminalLine 
                 entry={{
                   ...entry,
@@ -269,7 +268,7 @@ export const Terminal: React.FC = () => {
           {/* Current Input Line - Only show if not processing and no animation is in progress */}
           {canTypeNewCommand && (
             <div className="flex items-center">
-              <span className="text-blue-400 mr-2">
+              <span className="text-blue-400 mr-1">
                 {isMobile ? 'guest$ ' : 'guest@suyash-portfolio:~$ '}
               </span>
               <div className="flex-1 relative">
@@ -280,7 +279,7 @@ export const Terminal: React.FC = () => {
                   onChange={(e) => setCurrentInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   onKeyDown={handleKeyDown}
-                  className="bg-transparent border-none outline-none w-full text-white caret-transparent"
+                  className="bg-transparent border-none outline-none w-full text-white caret-transparent p-0 m-0"
                   autoFocus
                   spellCheck={false}
                   autoComplete="off"
@@ -298,7 +297,7 @@ export const Terminal: React.FC = () => {
           {/* Processing indicator */}
           {isProcessing && (
             <div className="flex items-center">
-              <span className="text-blue-400 mr-2">
+              <span className="text-blue-400 mr-1">
                 {isMobile ? 'guest$ ' : 'guest@suyash-portfolio:~$ '}
               </span>
               <span className="text-yellow-400">Processing...</span>
@@ -308,9 +307,9 @@ export const Terminal: React.FC = () => {
             </div>
           )}
           
-          {/* Animation in progress indicator - just a blinking cursor */}
+          {/* Animation in progress indicator */}
           {!isProcessing && isAnimating && (
-            <div className="h-5">
+            <div className="h-4">
               <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>
                 █
               </span>

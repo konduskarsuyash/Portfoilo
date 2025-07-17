@@ -16,7 +16,7 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
   const [isComplete, setIsComplete] = useState(!entry.animate);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const animationCompleteRef = useRef(false);
+  const hasNotifiedRef = useRef(false);
 
   useEffect(() => {
     // For non-animated content, just show it immediately
@@ -26,10 +26,10 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
       return;
     }
     
-    // Reset animation state when entry changes
+    // Reset state for animation
     setContent('');
     setIsComplete(false);
-    animationCompleteRef.current = false;
+    hasNotifiedRef.current = false;
     
     let charIndex = 0;
     const text = entry.content;
@@ -59,9 +59,9 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
         }
         setIsComplete(true);
         
-        // Notify parent that animation is complete, but only once
-        if (onAnimationComplete && !animationCompleteRef.current) {
-          animationCompleteRef.current = true;
+        // Only notify parent once when animation completes
+        if (onAnimationComplete && !hasNotifiedRef.current) {
+          hasNotifiedRef.current = true;
           onAnimationComplete();
         }
       }
@@ -98,14 +98,14 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
   const processContent = (content: string) => {
     if (!content) return '';
     
-    // Replace skill bars with styled versions
+    // Replace skill bars with more compact styled versions
     content = content.replace(/\[([\|]+) /g, (match, bars) => {
       const barCount = bars.length;
       const barWidth = barCount * 10;
       
       return `<span class="inline-flex items-center">
-        <span class="inline-block w-16 h-2 bg-gray-700 rounded-full overflow-hidden mr-1">
-          <span class="inline-block h-full bg-green-500 rounded-full" style="width: ${barWidth}%"></span>
+        <span class="inline-block w-12 h-1 bg-gray-700 rounded-sm overflow-hidden">
+          <span class="inline-block h-full bg-green-500 rounded-sm" style="width: ${barWidth}%"></span>
         </span>
       </span>`;
     });
@@ -119,9 +119,9 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({
   const getLinePrefix = () => {
     switch (entry.type) {
       case 'command':
-        return <span className="text-blue-400 mr-2">{prompt}</span>;
+        return <span className="text-blue-400 mr-1">{prompt}</span>;
       case 'error':
-        return <span className="text-red-400 mr-2">ERROR: </span>;
+        return <span className="text-red-400 mr-1">ERROR: </span>;
       default:
         return null;
     }
