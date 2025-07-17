@@ -233,8 +233,8 @@ private async showEducation(): Promise<CommandResult> {
 
 <span class="education-item">B.tech in Computer Science Engineering (Data Science)</span>
 <span class="institution-name">Dwarakadas J Sanghavi College Of Engineering</span>
-<span class="education-date">2022 - 2025</span>
-• Grade: <span class="grade-highlight">B- (8.32)</span>
+<span class="education-date">2022 - 2026</span>
+• Grade: <span class="grade-highlight">B- (8.28)</span>
 
 <span class="education-item">HSC board</span>
 <span class="institution-name">Vidyanidhi's Annasaheb Vartak College</span>
